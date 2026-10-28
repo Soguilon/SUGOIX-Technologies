@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SUGOIX Technologies company profile presentation.">
+<title>SUGOIX Technologies — Interactive Company Presentation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{--bg:#080B14;--bg2:#0E1424;--surface:#171E32;--violet:#8B5CF6;--violet-soft:#c4b5fd;--cyan:#38BDF8;--text:#F8FAFC;--dim:#D0D8E6;--faint:#A3B0C5;--border:rgba(255,255,255,.13);--glass:rgba(23,30,50,.72);--ease:cubic-bezier(.22,.8,.3,1);--nav-h:76px}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}body{overflow:hidden;-webkit-font-smoothing:antialiased}button,a{font:inherit}button:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}a{color:inherit}.field{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 600px at 10% 0%,rgba(139,92,246,.22),transparent 60%),radial-gradient(900px 600px at 100% 20%,rgba(56,189,248,.15),transparent 55%),var(--bg)}.field:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(900px 700px at 50% 0%,black,transparent 80%)}
+.topbar{height:var(--nav-h);position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px clamp(16px,4vw,52px);border-bottom:1px solid var(--border);background:rgba(8,11,20,.78);backdrop-filter:blur(18px)}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:800;white-space:nowrap}.brand-mark{width:34px;height:34px;flex:none}.top-label{color:var(--faint);font:500 .76rem 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}.top-actions{display:flex;align-items:center;gap:8px}.top-actions button,.control-btn{border:1px solid var(--border);background:rgba(255,255,255,.055);color:var(--text);border-radius:12px;padding:9px 13px;cursor:pointer;transition:background .2s,transform .2s,border-color .2s}.top-actions button:hover,.control-btn:hover{background:rgba(139,92,246,.2);border-color:rgba(196,181,253,.6);transform:translateY(-1px)}.progress-track{height:3px;background:rgba(255,255,255,.08);position:relative;z-index:11}.progress-bar{height:100%;width:16.666%;background:linear-gradient(90deg,var(--violet),var(--cyan));transition:width .45s var(--ease)}
+.deck{position:relative;z-index:1;height:calc(100dvh - var(--nav-h) - 3px - 78px);min-height:0}.slide{position:absolute;inset:0;overflow:auto;overscroll-behavior:contain;padding:clamp(22px,4vh,48px) 0;opacity:0;visibility:hidden;transform:translateX(34px) scale(.99);transition:opacity .38s var(--ease),transform .48s var(--ease),visibility .38s;scrollbar-width:thin;scrollbar-color:rgba(139,92,246,.6) transparent}.slide.active{opacity:1;visibility:visible;transform:none;z-index:2}.slide.leaving-left{transform:translateX(-34px) scale(.99)}.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,48px)}section{position:relative}.hero{padding:clamp(18px,3vh,42px) 0}.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);align-items:center;min-height:100%}.eyebrow,.section-label{color:var(--cyan);font-weight:700;font-size:.83rem;letter-spacing:.07em;text-transform:uppercase}.eyebrow{display:inline-flex;align-items:center;gap:9px;margin:0 0 18px}.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}h1.hero-title{font-size:clamp(2.5rem,6.5vw,5.3rem);line-height:1.03;letter-spacing:-.045em;margin:0 0 18px;font-weight:800;background:linear-gradient(135deg,#fff 30%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}.hero-tagline{font-size:clamp(1.05rem,2vw,1.45rem);color:var(--violet-soft);font-weight:700;margin:0 0 18px}.hero-desc,.overview-desc,.section-sub,.goal-desc,.tl-text,.closing-sub{color:var(--dim)}.hero-desc{font-size:clamp(1rem,1.3vw,1.15rem);max-width:58ch;margin:0 0 28px}.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:linear-gradient(135deg,var(--violet),#6d28d9);color:#fff;box-shadow:0 8px 28px rgba(139,92,246,.3)}.btn-ghost{background:rgba(255,255,255,.04);border-color:var(--border);color:var(--text)}.hero-visual{max-width:470px;margin:auto}.hero-visual svg{width:100%;height:auto}.section-pad{padding:clamp(8px,2vh,22px) 0}.section-head{max-width:780px;margin:0 0 clamp(22px,4vh,40px)}.section-label{margin:0 0 8px}.section-title{font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.15;letter-spacing:-.025em;margin:0 0 12px}.section-sub{font-size:1rem;max-width:65ch;margin:0}.glass{background:var(--glass);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(14px)}.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);align-items:start}.biz-type{display:inline-block;font-weight:800;font-size:clamp(1.05rem,2vw,1.35rem);margin:0 0 14px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,rgba(139,92,246,.2),rgba(56,189,248,.12));border:1px solid var(--border)}.overview-desc{font-size:1rem;margin:0}.specialties{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none;margin:0;padding:0}.specialty{display:flex;gap:11px;align-items:flex-start;padding:16px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.035)}.specialty svg{width:22px;height:22px;flex:none;color:var(--cyan);margin-top:2px}.specialty-label{font-weight:700;font-size:.95rem}.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.vm-card{padding:clamp(22px,3vw,34px);position:relative;overflow:hidden}.vm-card:before{content:"";position:absolute;top:-45%;right:-20%;width:230px;height:230px;border-radius:50%;filter:blur(65px);opacity:.28;pointer-events:none}.vision:before{background:var(--violet)}.mission:before{background:var(--cyan)}.vm-icon,.goal-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;border:1px solid var(--border);background:rgba(139,92,246,.16);color:var(--violet-soft)}.mission .vm-icon{background:rgba(56,189,248,.13);color:var(--cyan)}.vm-icon svg,.goal-icon svg{width:24px;height:24px}.vm-label{font-size:.82rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.1em;margin:0 0 10px}.vm-quote{font-size:clamp(1.02rem,1.7vw,1.28rem);line-height:1.6;font-weight:600;margin:0;position:relative}.goals-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.goal-card{padding:clamp(18px,2vw,26px);position:relative;transition:transform .2s,border-color .2s}.goal-card:hover{transform:translateY(-3px);border-color:rgba(196,181,253,.5)}.goal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}.goal-icon{margin:0;width:42px;height:42px}.goal-tag{font-size:.73rem;font-weight:800;padding:5px 10px;border-radius:999px;white-space:nowrap}.goal-tag.short{background:rgba(56,189,248,.15);color:#a5e5ff}.goal-tag.continuous{background:rgba(139,92,246,.2);color:#d2c2ff}.goal-tag.long{background:rgba(248,113,113,.14);color:#ffc0c0}.goal-num{font:700 .75rem 'JetBrains Mono',monospace;color:var(--cyan);margin:0 0 6px}.goal-title{font-size:1.05rem;line-height:1.3;margin:0 0 9px}.goal-desc{font-size:.91rem;margin:0}.goal-card.full{grid-column:1/-1}.timeline{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:26px}.timeline:before{content:"";position:absolute;top:8px;left:4%;right:4%;height:2px;background:linear-gradient(90deg,var(--violet),var(--cyan));opacity:.65}.tl-item{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-width:0}.tl-node{width:16px;height:16px;flex:none;border-radius:50%;background:var(--bg);border:3px solid var(--cyan);margin-bottom:18px;box-shadow:0 0 0 5px rgba(56,189,248,.12);position:relative;z-index:1}.tl-when{font:700 .78rem 'JetBrains Mono',monospace;color:var(--cyan);margin:0 0 8px}.tl-text{font-size:.92rem;margin:0}.closing{padding:clamp(20px,5vh,60px) 0;text-align:center}.closing-tag{font-size:clamp(1.8rem,4vw,3.3rem);line-height:1.15;font-weight:800;letter-spacing:-.03em;margin:0 0 20px;background:linear-gradient(135deg,#fff,var(--violet-soft));-webkit-background-clip:text;background-clip:text;color:transparent}.closing-sub{max-width:65ch;margin:0 auto 28px;font-size:1.05rem}.closing-brand{border-top:1px solid var(--border);padding-top:22px;margin:42px auto 0;max-width:720px;color:var(--faint);font-size:.9rem}.closing-brand .brand{justify-content:center;margin-bottom:10px;color:var(--text)}.closing-brand p{margin:6px 0}.deck-controls{position:relative;z-index:10;height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px clamp(16px,4vw,52px);border-top:1px solid var(--border);background:rgba(8,11,20,.88);backdrop-filter:blur(16px)}.control-group{display:flex;align-items:center;gap:8px}.control-btn{min-width:44px;min-height:42px;font-weight:700}.control-btn:disabled{opacity:.35;cursor:not-allowed;transform:none}.slide-count{font:600 .8rem 'JetBrains Mono',monospace;color:var(--dim);white-space:nowrap}.dots{display:flex;gap:7px;align-items:center;justify-content:center}.dot-btn{width:8px;height:8px;padding:0;border:0;border-radius:20px;background:#58647a;cursor:pointer;transition:width .25s,background .25s}.dot-btn[aria-current="true"]{width:25px;background:linear-gradient(90deg,var(--violet),var(--cyan))}.hint{font-size:.75rem;color:var(--faint)}.skip-link{position:absolute;left:-9999px;top:8px;z-index:99;background:var(--violet);padding:10px;border-radius:8px}.skip-link:focus{left:12px}
+@media(max-width:900px){:root{--nav-h:68px}.hero-inner{grid-template-columns:1fr;gap:12px}.hero-visual{order:-1;width:min(48vw,260px)}.overview-grid{grid-template-columns:1fr;gap:20px}.timeline{grid-template-columns:1fr;gap:14px;margin-top:18px}.timeline:before{top:8px;bottom:8px;left:7px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,var(--violet),var(--cyan))}.tl-item{display:grid;grid-template-columns:16px minmax(100px,.35fr) 1fr;gap:12px;align-items:start}.tl-node{margin:3px 0 0}.tl-when{margin:0}.tl-text{margin:0}.slide{padding:24px 0}}
+@media(max-width:600px){:root{--nav-h:62px}.top-label{display:none}.brand{font-size:.9rem}.brand-mark{width:30px;height:30px}.top-actions button{padding:8px 10px;font-size:.82rem}.deck{height:calc(100dvh - var(--nav-h) - 3px - 70px)}.deck-controls{height:70px;padding:8px 14px}.hint{display:none}.dots{gap:5px}.dot-btn{width:6px;height:6px}.dot-btn[aria-current="true"]{width:19px}.slide{padding:18px 0}.hero{padding:8px 0}.hero-inner{gap:8px}.hero-visual{width:min(44vw,180px)}.hero-desc{margin-bottom:20px}.hero-ctas{display:grid;grid-template-columns:1fr}.btn{width:100%;padding:11px 14px}.section-head{margin-bottom:20px}.specialties{grid-template-columns:1fr}.vm-grid{grid-template-columns:1fr;gap:14px}.vm-card{padding:20px}.goals-grid{grid-template-columns:1fr;gap:12px}.goal-card.full{grid-column:auto}.goal-card{padding:18px}.goal-desc{font-size:.92rem}.timeline{gap:16px}.tl-item{grid-template-columns:16px minmax(85px,.4fr) 1fr;gap:9px}.tl-text{font-size:.87rem}.closing-brand{margin-top:28px}}
+@media(max-width:380px){.brand{font-size:.82rem}.top-actions button{padding:7px 8px}.slide-count{font-size:.72rem}.control-group{gap:5px}.tl-item{grid-template-columns:14px 1fr}.tl-text{grid-column:2}}
+@media(orientation:landscape) and (max-height:560px){:root{--nav-h:54px}.topbar{padding-top:7px;padding-bottom:7px}.deck{height:calc(100dvh - var(--nav-h) - 3px - 58px)}.deck-controls{height:58px}.slide{padding:12px 0}.hero-visual{width:min(30vw,220px)}.hero-inner{grid-template-columns:1.1fr .9fr}.section-head{margin-bottom:16px}.vm-card{padding:16px}.goal-card{padding:14px}.goal-desc{font-size:.85rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* Refined responsive presentation: formal hierarchy, balanced spacing, and safe overflow */
+:root{--nav-h:76px;--control-h:78px;--page-gutter:clamp(18px,4vw,52px)}
+.deck{height:calc(100vh - var(--nav-h) - 3px - var(--control-h));height:calc(100dvh - var(--nav-h) - 3px - var(--control-h));}
+.slide{overscroll-behavior-y:contain;scroll-padding-block:20px;}
+.slide .wrap{width:min(100%,1240px)}
+.slide .section-pad{min-height:100%;display:flex;align-items:center}
+.slide .section-pad>.wrap{width:100%}
+.slide .hero{min-height:100%;display:flex;align-items:center}
+.slide .hero-inner{width:100%}
+.slide .section-head{max-width:780px}
+.slide .goal-card,.slide .vm-card,.slide .specialty{box-shadow:0 12px 35px rgba(0,0,0,.12)}
+.topbar,.deck-controls{padding-left:var(--page-gutter);padding-right:var(--page-gutter)}
+@media (min-width:1200px) and (min-height:720px){
+ .slide{padding-block:clamp(30px,5vh,64px)}
+ .hero-inner{gap:clamp(48px,6vw,88px)}
+ .hero-visual{max-width:500px}
+ .goals-grid{gap:20px}
+ .goal-card{padding:26px 28px}
+}
+@media (max-width:1024px){
+ :root{--nav-h:68px;--control-h:74px}
+ .top-label{font-size:.68rem;letter-spacing:.05em}
+ .slide .section-pad{align-items:flex-start}
+ .slide .hero{align-items:center}
+ .overview-grid{gap:24px}
+ .specialty{padding:14px}
+ .goal-desc{font-size:.94rem;line-height:1.55}
+}
+@media (max-width:767px){
+ :root{--nav-h:64px;--control-h:72px;--page-gutter:18px}
+ .topbar{gap:10px;padding-top:8px;padding-bottom:8px}
+ .brand{min-width:0;gap:8px;font-size:.92rem;letter-spacing:-.015em}
+ .brand span{overflow:hidden;text-overflow:ellipsis}
+ .brand-mark{width:30px;height:30px}
+ .top-label{display:none}
+ .top-actions button{padding:8px 11px;font-size:.82rem;white-space:nowrap}
+ .deck{height:calc(100vh - var(--nav-h) - 3px - var(--control-h));height:calc(100dvh - var(--nav-h) - 3px - var(--control-h))}
+ .slide{padding:22px 0 28px;}
+ .slide .section-pad{min-height:100%;padding:0;}
+ .slide .section-head{margin-bottom:22px}
+ .hero-inner{grid-template-columns:minmax(0,1fr);gap:14px}
+ .hero-visual{order:-1;width:clamp(112px,30vw,178px);max-width:178px;margin:0 auto 4px}
+ h1.hero-title{font-size:clamp(2.25rem,9vw,3.45rem);line-height:1.02;overflow-wrap:anywhere}
+ .eyebrow{font-size:.72rem;margin-bottom:12px}
+ .hero-tagline{font-size:1.05rem;line-height:1.45}
+ .hero-desc{font-size:.97rem;line-height:1.7;margin-bottom:22px}
+ .hero-ctas{display:flex;flex-direction:column;gap:10px}
+ .btn{width:100%;min-height:46px;padding:12px 16px}
+ .section-title{font-size:clamp(1.65rem,6.8vw,2.25rem);line-height:1.14}
+ .section-sub,.overview-desc{font-size:.96rem;line-height:1.7}
+ .biz-type{display:block;width:fit-content;max-width:100%;font-size:1rem;line-height:1.4;border-radius:14px;padding:11px 14px}
+ .specialties{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .specialty{padding:13px 12px;gap:9px;min-width:0}
+ .specialty-label{font-size:.85rem;line-height:1.4;overflow-wrap:anywhere}
+ .specialty svg{width:20px;height:20px}
+ .vm-grid{grid-template-columns:1fr;gap:14px}
+ .vm-card{padding:20px;border-radius:17px}
+ .vm-icon{width:40px;height:40px;margin-bottom:12px}
+ .vm-quote{font-size:1rem;line-height:1.65}
+ .goals-grid{grid-template-columns:1fr;gap:12px}
+ .goal-card,.goal-card.full{grid-column:auto;padding:18px;border-radius:17px}
+ .goal-title{font-size:1rem;line-height:1.4}
+ .goal-desc{font-size:.91rem;line-height:1.65}
+ .goal-top{margin-bottom:12px}
+ .goal-tag{font-size:.69rem;padding:5px 9px}
+ .timeline{gap:18px;margin-top:22px}
+ .tl-item{grid-template-columns:14px minmax(82px,.38fr) minmax(0,1fr);gap:10px}
+ .tl-when{font-size:.72rem;line-height:1.5;overflow-wrap:anywhere}
+ .tl-text{font-size:.88rem;line-height:1.55}
+ .closing{padding:12px 0 22px}
+ .closing-tag{font-size:clamp(1.8rem,7vw,2.7rem);line-height:1.12}
+ .closing-sub{font-size:.98rem;line-height:1.7}
+ .closing-brand{margin-top:26px;padding-top:20px}
+ .deck-controls{gap:10px;padding-top:8px;padding-bottom:8px}
+ .control-group{gap:6px}
+ .control-btn{min-width:40px;min-height:40px;padding:7px 10px}
+ .slide-count{font-size:.72rem;min-width:58px;text-align:center}
+ .dots{gap:5px;max-width:34vw;overflow:hidden}
+ .dot-btn{flex:0 0 7px;width:7px;height:7px}
+ .dot-btn[aria-current=true]{flex-basis:19px;width:19px}
+ .hint{display:none}
+}
+@media (max-width:420px){
+ :root{--nav-h:60px;--control-h:66px;--page-gutter:14px}
+ .brand{font-size:.82rem;gap:7px}
+ .brand-mark{width:27px;height:27px}
+ .top-actions button{font-size:.76rem;padding:7px 9px}
+ .slide{padding:17px 0 22px}
+ .wrap{padding-left:var(--page-gutter);padding-right:var(--page-gutter)}
+ .hero-visual{width:clamp(100px,27vw,138px)}
+ h1.hero-title{font-size:clamp(2rem,9.2vw,2.65rem)}
+ .eyebrow{font-size:.67rem;letter-spacing:.045em}
+ .hero-desc{font-size:.93rem}
+ .specialties{grid-template-columns:1fr}
+ .specialty{align-items:center;padding:12px 14px}
+ .specialty-label{font-size:.9rem}
+ .section-head{margin-bottom:18px}
+ .section-title{font-size:1.7rem}
+ .goal-card,.goal-card.full{padding:16px}
+ .tl-item{grid-template-columns:13px minmax(0,1fr);gap:9px}
+ .tl-when{grid-column:2}
+ .tl-text{grid-column:2;margin-top:-7px}
+ .deck-controls{gap:6px;padding-left:10px;padding-right:10px}
+ .control-group{gap:4px}
+ .control-btn{min-width:36px;min-height:38px;padding:6px 8px}
+ .slide-count{min-width:53px;font-size:.68rem}
+ .dots{gap:4px;max-width:29vw}
+ .dot-btn{flex-basis:6px;width:6px;height:6px}
+ .dot-btn[aria-current=true]{flex-basis:16px;width:16px}
+}
+@media (max-height:720px) and (min-width:768px){
+ .slide{padding-block:18px}
+ .hero-visual{max-width:300px}
+ .section-head{margin-bottom:18px}
+ .vm-card{padding:20px 22px}
+ .goal-card{padding:17px 20px}
+ .goal-desc{font-size:.88rem;line-height:1.48}
+ .timeline{margin-top:15px}
+}
+@media (orientation:landscape) and (max-height:560px){
+ :root{--nav-h:52px;--control-h:56px}
+ .topbar{padding-top:5px;padding-bottom:5px}
+ .brand-mark{width:27px;height:27px}
+ .slide{padding-block:10px}
+ .slide .section-pad{min-height:auto}
+ .hero-inner{grid-template-columns:1.1fr .9fr;gap:22px}
+ .hero-visual{order:initial;width:min(25vw,170px)}
+ h1.hero-title{font-size:clamp(1.9rem,5vh,2.7rem)}
+ .hero-desc{font-size:.86rem;line-height:1.5;margin-bottom:12px}
+ .hero-tagline{font-size:.98rem;margin-bottom:10px}
+ .section-head{margin-bottom:12px}
+ .vm-grid{grid-template-columns:1fr 1fr}
+ .vm-card{padding:13px 16px}
+ .vm-icon{margin-bottom:8px}
+ .vm-quote{font-size:.9rem;line-height:1.45}
+ .goals-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .goal-card,.goal-card.full{padding:12px}
+ .goal-card.full{grid-column:1/-1}
+ .goal-icon{width:32px;height:32px}
+ .goal-desc{font-size:.78rem;line-height:1.4}
+ .timeline{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+ .timeline:before{top:7px;left:4%;right:4%;width:auto;height:2px}
+ .tl-item{display:flex;flex-direction:column;gap:0}
+ .tl-node{margin-bottom:10px}
+ .tl-text{font-size:.76rem}
+ .closing{padding:8px 0}
+ .closing-brand{margin-top:16px;padding-top:12px}
+ .deck-controls{padding-top:4px;padding-bottom:4px}
+}
+@media(prefers-reduced-motion:reduce){.slide{transition:none!important}}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#deck">Skip to presentation</a>
+<div class="field" aria-hidden="true"></div>
+<header class="topbar">
+  <a href="#" class="brand" aria-label="SUGOIX Technologies presentation home" data-goto="0">
+    <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" stroke="url(#navGrad)" stroke-width="1.6"/><path d="M9 20L16 9L23 20" stroke="url(#navGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="9" r="1.8" fill="#38BDF8"/><circle cx="9" cy="20" r="1.8" fill="#8B5CF6"/><circle cx="23" cy="20" r="1.8" fill="#8B5CF6"/><defs><linearGradient id="navGrad" x1="1" y1="1" x2="31" y2="31"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#38BDF8"/></linearGradient></defs></svg>
+    <span>SUGOIX Technologies</span>
+  </a>
+  <span class="top-label">Company Profile / Interactive Deck</span>
+  <div class="top-actions"><button id="overviewBtn" type="button" aria-label="Show slide overview">☷ Overview</button></div>
+</header>
+<div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+<main class="deck" id="deck" aria-label="SUGOIX Technologies presentation">
+  <div class="slide active" data-title="Welcome" aria-hidden="false"><section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> Technology &middot; Innovation &middot; Growth</p>
+        <h1 class="hero-title">SUGOIX Technologies</h1>
+        <p class="hero-tagline">Think Smarter. Build Better. Lead Forward.</p>
+        <p class="hero-desc">We design intelligent software, resilient business systems, and secure digital infrastructure that help organizations operate efficiently and adapt to a fast-changing digital landscape.</p>
+        <div class="hero-ctas">
+          <a href="#company" class="btn btn-primary">Explore Our Company</a>
+          <a href="#goals" class="btn btn-ghost">View Our Goals</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 440 420" fill="none">
+          <defs>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="440" y2="420" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#8B5CF6"/>
+              <stop offset="1" stop-color="#38BDF8"/>
+            </linearGradient>
+          </defs>
+          <g stroke="url(#lineGrad)" stroke-width="1.2" opacity="0.55" class="orbit-line" stroke-dasharray="6 10">
+            <line x1="90" y1="90" x2="220" y2="200"/>
+            <line x1="350" y1="70" x2="220" y2="200"/>
+            <line x1="220" y1="200" x2="110" y2="320"/>
+            <line x1="220" y1="200" x2="340" y2="310"/>
+            <line x1="220" y1="200" x2="220" y2="60"/>
+            <line x1="90" y1="90" x2="350" y2="70"/>
+            <line x1="110" y1="320" x2="340" y2="310"/>
+          </g>
+          <g>
+            <circle cx="220" cy="200" r="30" fill="rgba(139,92,246,0.14)" stroke="#8B5CF6" stroke-width="1.4" class="node-pulse"/>
+            <circle cx="90" cy="90" r="13" fill="rgba(56,189,248,0.16)" stroke="#38BDF8" stroke-width="1.3" class="node-pulse"/>
+            <circle cx="350" cy="70" r="10" fill="rgba(139,92,246,0.18)" stroke="#8B5CF6" stroke-width="1.3" class="node-pulse"/>
+            <circle cx="110" cy="320" r="11" fill="rgba(139,92,246,0.18)" stroke="#8B5CF6" stroke-width="1.3" class="node-pulse"/>
+            <circle cx="340" cy="310" r="14" fill="rgba(56,189,248,0.16)" stroke="#38BDF8" stroke-width="1.3" class="node-pulse"/>
+            <circle cx="220" cy="60" r="9" fill="rgba(56,189,248,0.18)" stroke="#38BDF8" stroke-width="1.3" class="node-pulse"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section></div>
+  <div class="slide" data-title="Company" aria-hidden="true"><section id="company" class="section-pad">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="section-label">Company</p>
+        <h2 class="section-title">What SUGOIX Technologies does</h2>
+      </div>
+
+      <div class="overview-grid">
+        <div class="reveal">
+          <span class="biz-type">Technology and Software Development</span>
+          <p class="overview-desc">SUGOIX Technologies is a technology and software development company specializing in artificial intelligence (AI), web and mobile application development, business information systems, and cybersecurity solutions. The company aims to help individuals and organizations solve operational problems, improve productivity, and adapt to an increasingly digital business environment.</p>
+        </div>
+
+        <ul class="specialties reveal">
+          <li class="specialty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+            <span class="specialty-label">Artificial Intelligence</span>
+          </li>
+          <li class="specialty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+            <span class="specialty-label">Web &amp; Mobile App Development</span>
+          </li>
+          <li class="specialty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+            <span class="specialty-label">Business Information Systems</span>
+          </li>
+          <li class="specialty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+            <span class="specialty-label">Cybersecurity Solutions</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section></div>
+  <div class="slide" data-title="Vision & Mission" aria-hidden="true"><section id="vision-mission" class="section-pad">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="section-label">Vision &amp; Mission</p>
+        <h2 class="section-title">Where we're headed, and why</h2>
+      </div>
+
+      <div class="vm-grid">
+        <article class="vm-card vision glass reveal">
+          <div class="vm-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+          </div>
+          <p class="vm-label">Vision</p>
+          <p class="vm-quote">&ldquo;To become a trusted technology leader through innovative, secure, and intelligent digital solutions that drive progress and sustainable growth.&rdquo;</p>
+        </article>
+
+        <article class="vm-card mission glass reveal">
+          <div class="vm-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18l6-6-3-3 8-6 3 3-6 8-3-3-6 6z"/><path d="M14 10l4 4"/></svg>
+          </div>
+          <p class="vm-label">Mission</p>
+          <p class="vm-quote">&ldquo;To develop reliable and innovative software solutions that solve real-world problems, improve productivity, and help businesses and individuals succeed through technology.&rdquo;</p>
+        </article>
+      </div>
+    </div>
+  </section></div>
+  <div class="slide" data-title="Goals" aria-hidden="true"><section id="goals" class="section-pad">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="section-label">Company Goals</p>
+        <h2 class="section-title">Five goals that guide our growth</h2>
+        <p class="section-sub">From launching our first products to building a lasting reputation, these goals set a clear, measurable path for the company.</p>
+      </div>
+
+      <div class="goals-grid">
+        <article class="goal-card glass reveal">
+          <div class="goal-top">
+            <div class="goal-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5L12 2z"/></svg>
+            </div>
+            <span class="goal-tag short">Short-term</span>
+          </div>
+          <p class="goal-num">Goal 01</p>
+          <h3 class="goal-title">Develop and Launch Software Products</h3>
+          <p class="goal-desc">Develop and launch at least two functional software products within the first year of operation to establish the company's portfolio and demonstrate its technical capabilities.</p>
+        </article>
+
+        <article class="goal-card glass reveal">
+          <div class="goal-top">
+            <div class="goal-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 8a3 3 0 110 6"/><path d="M21 20c0-2.6-1.7-4.8-4-5.6"/></svg>
+            </div>
+            <span class="goal-tag short">Short-term</span>
+          </div>
+          <p class="goal-num">Goal 02</p>
+          <h3 class="goal-title">Establish a Strong Customer Base</h3>
+          <p class="goal-desc">Acquire at least 20 paying clients within the first two years by providing reliable software solutions, responsive customer support, and services tailored to client needs.</p>
+        </article>
+
+        <article class="goal-card glass reveal full">
+          <div class="goal-top">
+            <div class="goal-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6l7-3z"/><circle cx="12" cy="11" r="2.2"/><path d="M12 7v2M12 13v2M9 9l1.3 1.3M14.7 13.7L16 15M15 9l-1.3 1.3M9.3 13.7L8 15"/></svg>
+            </div>
+            <span class="goal-tag continuous">Continuous</span>
+          </div>
+          <p class="goal-num">Goal 03</p>
+          <h3 class="goal-title">Strengthen Innovation and Technical Excellence</h3>
+          <p class="goal-desc">Continuously improve the company's technical capabilities by adopting appropriate AI technologies, strengthening cybersecurity practices, and evaluating emerging tools to maintain the quality, security, and relevance of its products.</p>
+        </article>
+
+        <article class="goal-card glass reveal">
+          <div class="goal-top">
+            <div class="goal-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg>
+            </div>
+            <span class="goal-tag long">Long-term</span>
+          </div>
+          <p class="goal-num">Goal 04</p>
+          <h3 class="goal-title">Expand Into the Philippine Market</h3>
+          <p class="goal-desc">Expand the company's services to clients across multiple regions of the Philippines within five years through strategic partnerships, effective marketing, and consistent service quality.</p>
+        </article>
+
+        <article class="goal-card glass reveal">
+          <div class="goal-top">
+            <div class="goal-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-7h6v7"/></svg>
+            </div>
+            <span class="goal-tag long">Long-term</span>
+          </div>
+          <p class="goal-num">Goal 05</p>
+          <h3 class="goal-title">Achieve Long-Term Business Sustainability</h3>
+          <p class="goal-desc">Establish a financially sustainable and reputable technology company within ten years by maintaining customer trust, delivering consistent value, developing competitive services, and reinvesting in innovation and organizational growth.</p>
+        </article>
+      </div>
+    </div>
+  </section></div>
+  <div class="slide" data-title="Timeline" aria-hidden="true"><section id="timeline" class="section-pad">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="section-label">Strategic Timeline</p>
+        <h2 class="section-title">A planned path forward</h2>
+        <p class="section-sub">These are targets the company is working toward, not milestones already reached.</p>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <div class="tl-node"></div>
+          <p class="tl-when">Year 1</p>
+          <p class="tl-text">Launch at least two functional software products.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-node"></div>
+          <p class="tl-when">Within 2 years</p>
+          <p class="tl-text">Acquire at least 20 paying clients.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-node"></div>
+          <p class="tl-when">Continuous</p>
+          <p class="tl-text">Improve innovation, technology, and cybersecurity.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-node"></div>
+          <p class="tl-when">Within 5 years</p>
+          <p class="tl-text">Expand into multiple Philippine regions.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-node"></div>
+          <p class="tl-when">Within 10 years</p>
+          <p class="tl-text">Achieve financial sustainability and a strong reputation.</p>
+        </div>
+      </div>
+    </div>
+  </section></div>
+  <div class="slide" data-title="Closing" aria-hidden="true"><section class="closing">
+    <div class="wrap">
+      <p class="closing-tag reveal">Think Smarter. Build Better. Lead Forward.</p>
+      <p class="closing-sub reveal">SUGOIX Technologies aims to turn innovative thinking into practical digital solutions that help businesses and individuals operate efficiently and grow sustainably.</p>
+      <a href="#home" class="btn btn-primary reveal">Restart</a>
+    </div>
+  </section>
+    <div class="wrap closing-brand">
+      <a href="#" class="brand" data-goto="0"><span>SUGOIX Technologies</span></a>
+      <p class="footer-tag">Think Smarter. Build Better. Lead Forward.</p>
+      <p class="footer-desc">A technology and software development company focused on AI, web and mobile applications, business information systems, and cybersecurity.</p>
+      <p>© <span id="year"></span> SUGOIX Technologies. All rights reserved.</p>
+      <p>Company profile presentation.</p>
+    </div>
+  </div>
+</main>
+<footer class="deck-controls" aria-label="Presentation controls">
+  <div class="control-group"><button class="control-btn" id="prevBtn" type="button" aria-label="Previous slide">←</button><span class="slide-count" id="slideCount" aria-live="polite">01 / 06</span><button class="control-btn" id="nextBtn" type="button" aria-label="Next slide">→</button></div>
+  <div class="dots" id="slideDots" aria-label="Choose a slide"></div>
+  <span class="hint">Use ← → keys to navigate</span>
+</footer>
+<div id="overviewPanel" hidden style="position:fixed;inset:0;z-index:30;background:rgba(4,7,15,.88);backdrop-filter:blur(14px);padding:clamp(18px,4vw,48px);overflow:auto">
+  <div style="max-width:1000px;margin:auto"><div style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px"><h2 style="margin:0;font-size:clamp(1.5rem,3vw,2.3rem)">Slide overview</h2><button class="control-btn" id="closeOverview" type="button">✕ Close</button></div><div id="overviewGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px"></div></div>
+</div>
+<script>
+(function(){
+ const slides=[...document.querySelectorAll('.slide')], count=document.getElementById('slideCount'), bar=document.getElementById('progressBar'), dots=document.getElementById('slideDots'), prev=document.getElementById('prevBtn'), next=document.getElementById('nextBtn'), overview=document.getElementById('overviewPanel'), grid=document.getElementById('overviewGrid');
+ let current=0, touchX=0, touchY=0;
+ document.getElementById('year').textContent=new Date().getFullYear();
+ slides.forEach((s,i)=>{
+   const b=document.createElement('button'); b.className='dot-btn'; b.type='button'; b.setAttribute('aria-label','Go to slide '+(i+1)+': '+s.dataset.title); b.addEventListener('click',()=>go(i)); dots.appendChild(b);
+   const card=document.createElement('button'); card.type='button'; card.style.cssText='text-align:left;color:var(--text);background:linear-gradient(145deg,rgba(23,30,50,.96),rgba(12,17,31,.96));border:1px solid var(--border);border-radius:16px;padding:20px;min-height:110px;cursor:pointer;transition:transform .2s,border-color .2s'; card.innerHTML='<div style="font:700 .72rem JetBrains Mono,monospace;color:var(--cyan);margin-bottom:12px">SLIDE '+String(i+1).padStart(2,'0')+'</div><strong style="font-size:1.08rem">'+s.dataset.title+'</strong><div style="color:var(--faint);font-size:.84rem;margin-top:7px">Open slide →</div>'; card.addEventListener('click',()=>{overview.hidden=true;go(i)}); card.addEventListener('mouseenter',()=>{card.style.transform='translateY(-3px)';card.style.borderColor='rgba(196,181,253,.6)'});card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.borderColor='var(--border)'});grid.appendChild(card);
+ });
+ function go(i){
+   i=Math.max(0,Math.min(slides.length-1,i)); if(i===current && slides[i].classList.contains('active')){slides[i].scrollTop=0;return}
+   const old=current; slides[old].classList.remove('active','leaving-left'); slides[old].setAttribute('aria-hidden','true'); if(i>old) slides[old].classList.add('leaving-left');
+   current=i; slides[current].scrollTop=0; slides[current].classList.add('active'); slides[current].setAttribute('aria-hidden','false');
+   [...dots.children].forEach((d,n)=>d.setAttribute('aria-current',String(n===current)));
+   count.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0'); bar.style.width=((current+1)/slides.length*100)+'%';prev.disabled=current===0;next.disabled=current===slides.length-1;
+   document.title=slides[current].dataset.title+' — SUGOIX Technologies';
+ }
+ prev.addEventListener('click',()=>go(current-1));next.addEventListener('click',()=>go(current+1));
+ document.querySelectorAll('[data-goto]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();go(Number(el.dataset.goto))}));
+ document.getElementById('overviewBtn').addEventListener('click',()=>overview.hidden=false);document.getElementById('closeOverview').addEventListener('click',()=>overview.hidden=true);
+ overview.addEventListener('click',e=>{if(e.target===overview)overview.hidden=true});
+ document.addEventListener('keydown',e=>{
+   if(!overview.hidden){if(e.key==='Escape')overview.hidden=true;return}
+   if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(current+1)}
+   else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(current-1)}
+   else if(e.key==='Home'){e.preventDefault();go(0)}else if(e.key==='End'){e.preventDefault();go(slides.length-1)}
+ });
+ const deck=document.getElementById('deck');deck.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX;touchY=e.changedTouches[0].screenY},{passive:true});
+ deck.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchX,dy=e.changedTouches[0].screenY-touchY;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.25)go(current+(dx<0?1:-1))},{passive:true});
+ // Convert in-slide navigation anchors into slide navigation; internal content remains intact.
+ document.querySelectorAll('.slide a[href^="#"]').forEach(a=>{const target=a.getAttribute('href').slice(1);const map={home:0,company:1,'vision-mission':2,goals:3,timeline:4};if(target in map){a.addEventListener('click',e=>{e.preventDefault();go(map[target])})}});
+ go(0);
+})();
+</script>
+</body></html>
